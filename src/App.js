@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Navbar from './Components/Navbar';
+import Dashboard from './Pages/Dashboard';
+import { Box, Toolbar } from '@mui/material';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Sidebar from '../src/Components/Sidebar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Box display="flex">
+        <Sidebar/>
+        <Box flex="1" display="flex" flexDirection="column">
+          <Navbar />
+          <Toolbar />
+          <Box p={3}>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+            </Routes>
+          </Box>
+        </Box>
+      </Box>
+    </Router>
   );
 }
 
